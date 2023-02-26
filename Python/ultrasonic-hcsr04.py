@@ -26,6 +26,7 @@
 # Import required libraries
 import RPi.GPIO as GPIO
 import time
+import statistics
 
 # --------------------------------------------------------------------
 # PINS MAPPING AND SETUP
@@ -98,6 +99,6 @@ try:
         for i in range(reading_count):
             readings.append(distance())
             time.sleep(0.1)
-        print(readings)
+        print(readings, statistics.mean(readings),  statistics.stdev(readings))
 except KeyboardInterrupt:
     GPIO.cleanup()
