@@ -11,6 +11,21 @@
 
 (*) DuPont jumper colors - arbitrary assignments.
 
+## Requirements
+
+```text
+sudo apt install python3-rpi.gpio # pre-installed on R-Pi OS, not Debian.
+```
+
+Add `iomem=relaxed` to `/boot/firmware/cmdline.txt`
+
+Creata a `gpio` group, add `$USER` to that and change the ownership and permissions of the GPIO chip devices.
+
+```text
+sudo chown root.gpio /dev/gpiochip?
+sudo chmod g+rw /dev/gpiochip?
+```
+
 ## Status
 
 Distance from sensor PCB to cardboard box. A series of 10 (or more) batches of 5 readings plus mean and standard deviation.
