@@ -29,6 +29,17 @@ static void unwind(const char * tag,
         gpiod_chip_close(chip);
 }
 
+static float calc_distance(const struct timespec *start, const struct timespec *end)
+{
+    time_t      delta_ns;
+    if(end->tv_sec == start->tv_sec )
+        delta_ns = end->tv_nsec - start->tv_nsec;
+    else
+        delta_ns = end->tv_nsec - start->tv_nsec + 1000000000;
+
+    return (float)delta_ns/(148*1000);
+
+}
 int main(int argc, char **argv)
 {
     // need to open the chip first
@@ -127,7 +138,8 @@ int main(int argc, char **argv)
             printf("end %d at %ld s, %ld ns\n", end_pulse.event_type, end_pulse.ts.tv_sec, end_pulse.ts.tv_nsec);
         }
 
-        printf("\n");
+        float dist = calc_distance(&start_pulse.ts, &end_pulse.ts);
+        printf("distance: %f\n\n", dist);
         sleep(1); // Delay before next measurement
     }
 
