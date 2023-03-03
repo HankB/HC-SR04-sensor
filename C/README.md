@@ -16,7 +16,7 @@ The way to avoid these is to use event handling built into the GPIOD driver <htt
 
 ## Overview
 
-1. Configure GPIO 8 as output (trigger) and GPIO 11 to monitor input changes (echo).
+1. Configure GPIO 11 as output (trigger) and GPIO 8 to monitor input changes (echo).
 1. Drive the trigger high for 10 usec.
 1. Monitor echo and record time when the input goes high and when it gots low.
 1. Calculate distance according to the width of the echo pulse.
