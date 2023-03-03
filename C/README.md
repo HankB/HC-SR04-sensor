@@ -21,3 +21,13 @@ The way to avoid these is to use event handling built into the GPIOD driver <htt
 1. Monitor echo and record time when the input goes high and when it gots low.
 1. Calculate distance according to the width of the echo pulse.
 
+
+## Status
+
+Current code reports time stamps and resulting distance.
+
+## TODO
+
+* Provide output analogous to the Python example along with statistics (mean, standard deviation) so results can be compared more directly.
+* Fix problem where start and end events become unsynchronized.
+* Flesh out the discussion a bit more.
