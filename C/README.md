@@ -1,5 +1,11 @@
 # measure_distance
 
+## Status
+
+* Current code reports time stamps and resulting distance.
+* Work in this direction is proceeding in <https://github.com/HankB/event-driven-HC-SR04>
+* In other words, "My work here is done." (But feel free to fork, report bugs and submit PRs.)
+
 ## References
 
 [Sparkfin data sheet](https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf)  
@@ -10,9 +16,9 @@
 Examples I found of code that uses the HC-SR04 sensor all busy-wait for the return signal, This introduces two issues.
 
 * High CPU usage while waiting. This is probably not an issue with this application where the time between the trigger and echo signals is a fraction of a second, but for other applications where there is a need to wait for a longer interval for a SPIO inpuit to change, this could cause problems.
-* Jitter in the measured result, particularly with single threadded cores such as on the Pi Zero where some other processing can delay recognition of the input change.
+* Jitter in the measured result, particularly with single threaded cores such as on the Pi Zero where some other processing can delay recognition of the input change.
 
-The way to avoid these is to use event handling built into the GPIOD driver <https://libgpiod.readthedocs.io/en/latest/group__line__event.html>
+The way to avoid these is to use event handling built into the GPIOD driver <https://libgpiod.readthedocs.io/en/latest/group__line__event.html> (Note: It has been difficult to this doc between the version available in Debian and the latest release. Good luck.)
 
 ## Overview
 
@@ -21,12 +27,9 @@ The way to avoid these is to use event handling built into the GPIOD driver <htt
 1. Monitor echo and record time when the input goes high and when it gots low.
 1. Calculate distance according to the width of the echo pulse.
 
-
-## Status
-
-Current code reports time stamps and resulting distance.
-
 ## TODO
+
+See Status.
 
 * Provide output analogous to the Python example along with statistics (mean, standard deviation) so results can be compared more directly.
 * Fix problem where start and end events become unsynchronized.
