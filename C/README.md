@@ -34,3 +34,4 @@ See Status.
 * Provide output analogous to the Python example along with statistics (mean, standard deviation) so results can be compared more directly.
 * Fix problem where start and end events become unsynchronized.
 * Flesh out the discussion a bit more.
+* Further development is taking place in <https://github.com/HankB/event-driven-HC-SR04>
